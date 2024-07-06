@@ -1,4 +1,4 @@
-package dev.theolm.template.ui.theme
+package dev.theolm.pushalarm.ui.theme
 
 import android.app.Activity
 import android.content.Context
@@ -19,8 +19,8 @@ import androidx.compose.ui.text.style.LineBreak
 import androidx.core.view.WindowCompat
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.color.MaterialColors
-import dev.theolm.template.ui.theme.ColorScheme.DEFAULT_SEED_COLOR
-import dev.theolm.template.ui.theme.ColorScheme.colorSchemeFromColor
+import dev.theolm.pushalarm.ui.theme.ColorScheme.DEFAULT_SEED_COLOR
+import dev.theolm.pushalarm.ui.theme.ColorScheme.colorSchemeFromColor
 
 fun Color.applyOpacity(enabled: Boolean): Color {
     return if (enabled) this else this.copy(alpha = 0.62f)
