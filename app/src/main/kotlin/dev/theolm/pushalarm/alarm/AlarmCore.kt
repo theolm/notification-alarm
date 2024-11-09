@@ -12,10 +12,12 @@ interface AlarmCore {
     fun stop()
 }
 
-internal class AlarmCoreImpl(private val applicationContext: Context) : AlarmCore {
+internal class AlarmCoreImpl(
+    private val applicationContext: Context,
+    private val mediaPlayer: MediaPlayer,
+) : AlarmCore {
     //TODO: replace with custom sound
     private val alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
-    private val mediaPlayer = MediaPlayer()
 
     init {
         setupMediaPlayer()
@@ -38,15 +40,11 @@ internal class AlarmCoreImpl(private val applicationContext: Context) : AlarmCor
         mediaPlayer.setDataSource(applicationContext, alert)
         mediaPlayer.isLooping = true
 
-        if (Build.VERSION.SDK_INT >= 21) {
-            mediaPlayer.setAudioAttributes(
-                AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_ALARM)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                    .build()
-            )
-        } else {
-            mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM)
-        }
+        mediaPlayer.setAudioAttributes(
+            AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_ALARM)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build()
+        )
     }
 }

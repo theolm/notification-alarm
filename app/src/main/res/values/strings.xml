@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Notification Alarm</string>
+
+    <!--    Generic texts -->
+    <string name="back_button_description">back button</string>
+
 </resources>

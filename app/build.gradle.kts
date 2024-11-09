@@ -72,11 +72,16 @@ dependencies {
     implementation(libs.androidx.coreKtx)
     implementation(libs.androidx.appCompat)
     implementation(libs.androidx.activityCompose)
+    implementation(libs.kotlin.coroutines.core)
     implementation(libs.compose.material3)
     implementation(libs.material)
 
     implementation(libs.koin.core)
     implementation(libs.koin.compose)
+
+    implementation(libs.voyager.navigation)
+    implementation(libs.voyager.screenModel)
+    implementation(libs.voyager.koin)
 
     debugImplementation(libs.compose.uiTooling)
 
