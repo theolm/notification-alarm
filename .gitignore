@@ -53,7 +53,6 @@ captures/
 .idea/deploymentTargetDropDown.xml
 .idea/deploymentTargetSelector.xml
 .idea/inspectionProfiles/Project_Default.xml
-.idea/inspectionProfiles/Project_Default.xml
 .kotlin
 # Android Studio 3 in .gitignore file.
 .idea/caches
