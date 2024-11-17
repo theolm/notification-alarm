@@ -3,6 +3,7 @@ package dev.theolm.pushalarm.di
 import android.media.MediaPlayer
 import dev.theolm.pushalarm.alarm.AlarmCore
 import dev.theolm.pushalarm.alarm.AlarmCoreImpl
+import dev.theolm.pushalarm.ui.screens.add.AddAlarmViewModel
 import dev.theolm.pushalarm.ui.screens.home.HomeScreenViewModel
 import org.koin.dsl.module
 
@@ -17,5 +18,9 @@ val appModule = module {
 
     factory {
         HomeScreenViewModel()
+    }
+
+    factory {
+        AddAlarmViewModel()
     }
 }

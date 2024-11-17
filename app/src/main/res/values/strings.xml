@@ -4,4 +4,7 @@
     <!--    Generic texts -->
     <string name="back_button_description">back button</string>
 
+    <!--    AddAlarm screen -->
+    <string name="add_alarm_title">Add Alarm</string>
+    <string name="add_alarm_message">To create an alarm based on a notification, we first need to include a filter in the alarm so that it is possible to match the alarm with the desired notification. Provide one or more fields for the filter.</string>
 </resources>

@@ -6,18 +6,19 @@ androidxAppCompat = "1.7.0"
 androidMaterial = "1.12.0"
 androidxActivity = "1.9.3"
 androidxLifecycle = "2.8.7"
-androidxComposeBom = "2024.10.01"
+androidxComposeBom = "2024.11.00"
 composeMaterial3 = "1.3.1"
 detektPlugin = "1.23.7"
 detektComposeRule = "1.4.0"
 datastore = "1.1.1"
 koin = "4.0.0"
-composeNavigation = "2.8.3"
+composeNavigation = "2.8.4"
 serializationJson = "1.7.3"
 immutableCollections = "0.3.7"
-decompose = "3.2.1"
+decompose = "3.2.2"
 voyager = "1.1.0-beta02"
 coroutines = "1.9.0"
+junitVersion = "4.13.2"
 
 [libraries]
 android-gradlePlugin = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
@@ -60,6 +61,8 @@ voyager-lifecycleKmp = { module = "cafe.adriel.voyager:voyager-lifecycle-kmp", v
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detektPlugin" }
 detekt-composeRules = { module = "ru.kode:detekt-rules-compose", version.ref = "detektComposeRule" }
 detekt-gradlePlugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detektPlugin" }
+
+junit-junit = { group = "junit", name = "junit", version.ref = "junitVersion" }
 
 
 [plugins]

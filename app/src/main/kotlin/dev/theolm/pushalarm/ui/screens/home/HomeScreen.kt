@@ -2,10 +2,14 @@ package dev.theolm.pushalarm.ui.screens.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.Scaffold
@@ -14,51 +18,65 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
-import cafe.adriel.voyager.core.screen.Screen
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import dev.theolm.pushalarm.R
-import dev.theolm.pushalarm.alarm.AlarmCore
+import dev.theolm.pushalarm.ui.components.DefaultTopAppBar
+import dev.theolm.pushalarm.ui.navigation.AddAlarmRoute
+import dev.theolm.pushalarm.ui.navigation.LocalNavigator
 import org.koin.androidx.compose.koinViewModel
-import org.koin.compose.koinInject
 
-class HomeScreen : Screen {
-    @Composable
-    override fun Content() {
-        val viewModel = koinViewModel<HomeScreenViewModel>()
-        HomeScreenContent()
-    }
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun HomeScreenContent() {
-    val alarmCore: AlarmCore = koinInject()
+internal fun HomeScreen(
+    viewModel: HomeScreenViewModel = koinViewModel(),
+) {
+    val navigator = LocalNavigator.current
+
+    val scrollBarBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Scaffold(
+        modifier = Modifier.nestedScroll(scrollBarBehavior.nestedScrollConnection),
         topBar = {
-            MediumTopAppBar(
-                title = {
-                    Text(stringResource(id = R.string.app_name))
-                },
-                colors = TopAppBarDefaults.largeTopAppBarColors().copy(
-                    scrolledContainerColor = MaterialTheme.colorScheme.secondaryContainer
-                ),
+            DefaultTopAppBar(
+                title = stringResource(id = R.string.app_name),
+                scrollBarBehavior = scrollBarBehavior,
             )
+        },
+        floatingActionButton = {
+            ExtendedFloatingActionButton(
+                onClick = {
+                    navigator?.navigate(AddAlarmRoute)
+                },
+                shape = FloatingActionButtonDefaults.largeShape
+            ) {
+                Text("Add alarm")
+            }
         }
     ) {
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(top = it.calculateTopPadding()),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            contentPadding = PaddingValues(16.dp)
         ) {
-            Button(
-                onClick = {
-                    alarmCore.stop()
+            repeat(50) {
+                item {
+                    ListItem(
+                        headlineContent = { Text("Alarm $it") },
+                    )
                 }
-            ) {
-                Text(text = "Stop Alarm")
             }
         }
     }
+}
+
+@Preview
+@Composable
+private fun Preview() {
+    HomeScreen(
+        viewModel = HomeScreenViewModel()
+    )
 }

@@ -12,6 +12,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import dev.theolm.pushalarm.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -41,3 +42,11 @@ fun DefaultTopAppBar(
         }
     )
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
+@Composable
+private fun DefaultTopAppBarPreview() {
+    DefaultTopAppBar(title = "Title")
+}
+
