@@ -67,6 +67,9 @@ android {
 }
 
 dependencies {
+    implementation(projects.data)
+    implementation(projects.domain)
+
     implementation(platform(libs.compose.bom))
 
     implementation(libs.androidx.coreKtx)

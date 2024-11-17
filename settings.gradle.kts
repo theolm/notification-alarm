@@ -17,4 +17,8 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "pushalarm"
-include(":app")
+include(
+    ":app",
+    ":data",
+    ":domain",
+)
